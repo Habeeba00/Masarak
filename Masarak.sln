@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37027.9 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masarak", "Masarak\Masarak.csproj", "{913BD647-66B0-4FE2-9708-95E2056BE040}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masarak", "Masarak.csproj", "{5A1EDFB3-FD71-8A14-D1BA-A9526F6B18E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{913BD647-66B0-4FE2-9708-95E2056BE040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{913BD647-66B0-4FE2-9708-95E2056BE040}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{913BD647-66B0-4FE2-9708-95E2056BE040}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{913BD647-66B0-4FE2-9708-95E2056BE040}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1EDFB3-FD71-8A14-D1BA-A9526F6B18E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1EDFB3-FD71-8A14-D1BA-A9526F6B18E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1EDFB3-FD71-8A14-D1BA-A9526F6B18E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1EDFB3-FD71-8A14-D1BA-A9526F6B18E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E6613B1C-66B0-498F-A937-42B1A0E86B6E}
+		SolutionGuid = {133C3443-C062-4386-9C33-1A03EF5ED66C}
 	EndGlobalSection
 EndGlobal

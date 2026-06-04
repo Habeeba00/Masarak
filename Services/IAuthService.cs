@@ -1,0 +1,15 @@
+using Masarak.DTOs;
+
+namespace Masarak.Services
+{
+    public interface IAuthService
+    {
+        Task<AuthResponse> RegisterAsync(RegisterRequest request);
+        Task<AuthResponse> LoginAsync(LoginRequest request);
+        Task<AuthResponse> RefreshTokenAsync(RefreshTokenRequest request);
+        Task<MessageResponse> LogoutAsync(string refreshToken);
+        Task<MessageResponse> RevokeTokenAsync(string refreshToken, int requestingUserId, string requestingUserRole);
+        Task<MessageResponse> ChangePasswordAsync(int userId, ChangePasswordRequest request);
+        Task<UserInfoDto?> GetCurrentUserAsync(int userId);
+    }
+}

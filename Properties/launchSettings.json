@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Masarak": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:49179;http://localhost:49180"
+    }
+  }
+}
