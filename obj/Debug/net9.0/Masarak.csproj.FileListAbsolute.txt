@@ -306,10 +306,12 @@ D:\ITI\GradProj\Masarak\obj\Debug\net9.0\staticwebassets.build.json
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\staticwebassets.development.json
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\ITI\GradProj\Masarak\obj\Debug\net9.0\swae.build.ex.cache
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\Masarak.csproj.Up2Date
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\Masarak.dll
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\refint\Masarak.dll
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\Masarak.pdb
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\Masarak.genruntimeconfig.cache
 D:\ITI\GradProj\Masarak\obj\Debug\net9.0\ref\Masarak.dll
+D:\ITI\GradProj\Masarak\bin\Debug\net9.0\Postman\Masarak_Local.postman_environment.json
+D:\ITI\GradProj\Masarak\bin\Debug\net9.0\Postman\Masarak_Phase2.postman_collection.json
+D:\ITI\GradProj\Masarak\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

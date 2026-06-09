@@ -18,37 +18,17 @@
 ## 1. Architecture Overview
 
 ```
-Masarak/
-├── Controllers/
-│   ├── AuthController.cs          # POST /api/auth/*
-│   └── SecuredControllers.cs      # Role-guarded example endpoints
-├── Services/
-│   ├── IAuthService.cs / AuthService.cs    # Business logic
-│   ├── IJwtService.cs  / JwtService.cs     # Token generation
-│   └── IPasswordService.cs / PasswordService.cs  # PBKDF2 hashing
-├── DTOs/
-│   └── AuthDTOs.cs                # Request/response models
-├── Entities/
-│   └── RefreshToken.cs            # New Phase 2 entity
-├── Configurations/
-│   └── JwtSettings.cs             # Strongly-typed config
-├── Extensions/
-│   └── ServiceCollectionExtensions.cs  # Clean DI wiring
-├── Policies/
-│   └── AppPolicies.cs             # Role & policy name constants
-├── Seeders/
-│   └── DatabaseSeeder.cs          # Role + Admin seeding
-├── Migrations/
-│   └── Phase2_AddRefreshTokens.sql     # Raw SQL migration
-├── Context.cs                     # Updated DbContext
-├── Program.cs                     # App entry point
-├── appsettings.json
-└── appsettings.Development.json
+Masarak.sln
+├── 1. Core/
+│   ├── Masarak.Domain/               # Entities (e.g., RefreshToken, User), Constants (AppRoles)
+│   └── Masarak.Application/          # Interfaces (IAuthService), DTOs
+├── 2. Infrastructure/
+│   └── Masarak.Infrastructure/       # Context, Migrations, Seeders, Services (AuthService, JwtService)
+└── 3. Presentation/
+    └── Masarak.API/                  # Controllers, Policies, Extensions, Program.cs
 ```
 
-**Design approach**: Clean layered architecture without full Clean Architecture overhead.
-Services are scoped per-request, registered through extension methods, and the DbContext
-is passed directly to services (no Unit of Work / Repository added — these are Phase 3 candidates).
+**Design approach**: Clean Architecture. The Domain is completely independent. The Application layer holds business contracts and DTOs. Infrastructure implements persistence (EF Core) and external concerns (Auth implementation). The Presentation (API) wires dependencies together and exposes endpoints.
 
 ---
 
@@ -512,6 +492,4 @@ Wait 15 minutes or restart the application to reset (in-memory lockout).
 | Refresh token cleanup job (prune expired) | Low | Phase 3 |
 | Repository/UoW pattern | Medium | Phase 3 |
 | Audit log for auth events | Medium | Phase 3 |
-| OAuth2 / Social login | Low | Phase 4 |
 | Two-factor authentication (TOTP) | Medium | Phase 4 |
-| Device fingerprinting on refresh tokens | Low | Phase 4 |

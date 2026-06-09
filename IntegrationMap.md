@@ -390,76 +390,83 @@ RevokedReason   — human-readable reason string
 ## Full Project Structure
 
 ```
-Masarak/
-├── Controllers/
-│   ├── AuthController.cs            # POST /api/auth/*  (7 endpoints)
-│   └── SecuredControllers.cs        # Admin, Teacher, Student, Parent, Shared
+Masarak.sln
 │
-├── Data/
-│   └── Context.cs                   # DbContext — all 26 entities + RefreshToken
+├── 1. Core
+│   │
+│   ├── Masarak.Domain
+│   │   ├── Constants/
+│   │   │   └── AppRoles.cs                  # Extracted role constants
+│   │   └── Entities/                        # (All Models moved here)
+│   │       ├── Role.cs
+│   │       ├── User.cs                      # ← Updated: 3 new columns
+│   │       ├── Student.cs
+│   │       ├── Teacher.cs
+│   │       ├── Parent.cs
+│   │       ├── ParentStudent.cs
+│   │       ├── Grade.cs
+│   │       ├── Class.cs
+│   │       ├── StudentClass.cs
+│   │       ├── Subject.cs
+│   │       ├── TeachingAssignment.cs
+│   │       ├── Session.cs
+│   │       ├── Attendance.cs
+│   │       ├── Assignment.cs
+│   │       ├── Submission.cs
+│   │       ├── Exam.cs
+│   │       ├── Question.cs
+│   │       ├── StudentExam.cs
+│   │       ├── StudentAnswer.cs
+│   │       ├── StudentPerformance.cs
+│   │       ├── AiRecommendation.cs
+│   │       ├── Notification.cs
+│   │       ├── Plan.cs
+│   │       ├── Subscription.cs
+│   │       ├── Payment.cs
+│   │       └── RefreshToken.cs              # ← Phase 2 NEW
+│   │
+│   └── Masarak.Application
+│       ├── Interfaces/
+│       │   ├── IAuthService.cs
+│       │   ├── IJwtService.cs
+│       │   └── IPasswordService.cs
+│       └── DTOs/
+│           └── AuthDTOs.cs                  # LoginRequest, RegisterRequest, AuthResponse, …
 │
-├── Models/                          # All domain entities (Phase 1 + Phase 2)
-│   ├── Role.cs
-│   ├── User.cs                      # ← Updated: 3 new columns
-│   ├── Student.cs
-│   ├── Teacher.cs
-│   ├── Parent.cs
-│   ├── ParentStudent.cs
-│   ├── Grade.cs
-│   ├── Class.cs
-│   ├── StudentClass.cs
-│   ├── Subject.cs
-│   ├── TeachingAssignment.cs
-│   ├── Session.cs
-│   ├── Attendance.cs
-│   ├── Assignment.cs
-│   ├── Submission.cs
-│   ├── Exam.cs
-│   ├── Question.cs
-│   ├── StudentExam.cs
-│   ├── StudentAnswer.cs
-│   ├── StudentPerformance.cs
-│   ├── AiRecommendation.cs
-│   ├── Notification.cs
-│   ├── Plan.cs
-│   ├── Subscription.cs
-│   ├── Payment.cs
-│   └── RefreshToken.cs              # ← Phase 2 NEW
+├── 2. Infrastructure
+│   │
+│   └── Masarak.Infrastructure
+│       ├── Persistence/
+│       │   ├── Context.cs                   # DbContext — all 26 entities + RefreshToken
+│       │   ├── Seeders/
+│       │   │   └── DatabaseSeeder.cs        # ← Updated: SeedGradesAsync added
+│       │   └── Migrations/
+│       │       ├── EfMigrations/
+│       │       │   └── 20260604000000_Phase2_AuthIntegration.cs
+│       │       ├── Phase2_AddRefreshTokens.sql
+│       │       └── Phase2_Auth_SqlChanges.sql
+│       │
+│       ├── Services/
+│       │   ├── AuthService.cs               # ← Updated: persisted lockout
+│       │   ├── JwtService.cs
+│       │   └── PasswordService.cs           # PBKDF2-SHA512
+│       │
+│       └── Configurations/
+│           └── JwtSettings.cs
 │
-├── DTOs/
-│   └── AuthDTOs.cs                  # LoginRequest, RegisterRequest, AuthResponse, …
-│
-├── Services/
-│   ├── IAuthService.cs
-│   ├── AuthService.cs               # ← Updated: persisted lockout, Models namespace
-│   ├── IJwtService.cs
-│   ├── JwtService.cs
-│   ├── IPasswordService.cs
-│   └── PasswordService.cs           # PBKDF2-SHA512
-│
-├── Configurations/
-│   └── JwtSettings.cs
-│
-├── Extensions/
-│   └── ServiceCollectionExtensions.cs
-│
-├── Policies/
-│   └── AppPolicies.cs               # Role + Policy name constants
-│
-├── Seeders/
-│   └── DatabaseSeeder.cs            # ← Updated: SeedGradesAsync added
-│
-├── Migrations/
-│   ├── EfMigrations/
-│   │   └── 20260604000000_Phase2_AuthIntegration.cs   # EF migration
-│   ├── Phase2_AddRefreshTokens.sql  # Phase 1→2 SQL only (legacy)
-│   └── Phase2_Auth_SqlChanges.sql   # Complete idempotent SQL (authoritative)
-│
-├── Program.cs                       # ← Updated: SeedGradesAsync call added
-├── appsettings.json
-├── appsettings.Development.json
-├── Masarak.csproj
-└── IntegrationMap.md                # This document
+└── 3. Presentation
+    │
+    └── Masarak.API
+        ├── Controllers/
+        │   ├── AuthController.cs            # POST /api/auth/*  (7 endpoints)
+        │   └── SecuredControllers.cs        # Admin, Teacher, Student, Parent, Shared
+        ├── Policies/
+        │   └── AppPolicies.cs               # Policy name constants
+        ├── Extensions/
+        │   └── ServiceCollectionExtensions.cs
+        ├── appsettings.json
+        ├── appsettings.Development.json
+        └── Program.cs                       # ← Updated: MigrationsAssembly added
 ```
 
 ---
